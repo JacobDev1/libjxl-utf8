@@ -1,8 +1,6 @@
 This [patch](#just-the-patch) enables UTF-8 support in all `libjxl` tools (`cjxl`, `cjpegli`...) on Windows.
 
-Already patched pre-builds are available in releases. The [compilation guide](#full-compilation-guide) is below.
-
-Another option is to [enable UTF-8 system-wide](#alternative-way).
+Already patched pre-builds are available in [releases](https://github.com/JacobDev1/libjxl-utf8/releases). The [compilation guide](#full-compilation-guide) is below.
 
 ## Just the Patch
 
@@ -90,18 +88,6 @@ To run them outside of MSYS2, you need to include the necessary DLLs in the same
 ### The Better Way
 
 Import any EXE into a [dependency walker](https://github.com/lucasg/Dependencies). Any DLL not linked to `system32` needs to be copied over from `C:/msys64/home/user/libjxl/build/tools`.
-
-## Alternative Way
-
-You can enable UTF-8 support in the original `libjxl` by making Windows use UTF-8 by default. However, doing this may break other software.
-
-Go to **Control Panel -> Change date, time or number formats -> Administrative -> Change system locale...**
-
-Check **Beta: Use Unicode UTF-8 for worldwide language support**
-
-Restart Windows
-
-You can also access these settings via **Win + R** then **intl.cpl**
 
 ## See Also
 
