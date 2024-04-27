@@ -69,8 +69,8 @@ To run them outside of MSYS2, you need to include the necessary DLLs in the same
 ### The Easy Way
 
 1. Make a new folder anywhere, let's call it `libjxl-tools`
-2. Copy the EXEs from `C:/msys64/home/user/libjxl/build/tools` to `libjxl-tools`
-3. Copy the DLLs mentioned below from `C:/msys64/mingw64/bin` into `libjxl-tools`
+2. Copy the EXEs from `C:/msys64/home/user/libjxl/build/tools/` to `libjxl-tools`
+3. Copy the DLLs mentioned below from `C:/msys64/mingw64/bin/` into `libjxl-tools`
 
 - zlib1.dll
 - libwinpthread-1.dll
@@ -83,11 +83,11 @@ To run them outside of MSYS2, you need to include the necessary DLLs in the same
 - libbrotlidec.dll
 - libbrotlicommon.dll
 
-4. Click on any EXE in `libjxl-tools`. If you get DLL errors, also include those DLLs.
+4. Click on `cjxl.exe` in `libjxl-tools`. If you get DLL errors, also include those DLLs.
 
 ### The Better Way
 
-Import any EXE into a [dependency walker](https://github.com/lucasg/Dependencies). Any DLL not linked to `system32` needs to be copied over from `C:/msys64/home/user/libjxl/build/tools`.
+Import `cjxl.exe` into a [dependency walker](https://github.com/lucasg/Dependencies). Any DLL not linked to `system32` needs to be copied over from `C:/msys64/mingw64/bin/`.
 
 ## See Also
 
