@@ -1,0 +1,53 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index d6891ef..bb7b8fa 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -300,7 +300,7 @@ else ()
+     if (NOT JPEGXL_ENABLE_SIZELESS_VECTORS)
+       set(HWY_DISABLED_TARGETS "${HWY_DISABLED_TARGETS}|HWY_SVE|HWY_SVE2|HWY_SVE_256|HWY_SVE2_128|HWY_RVV")
+     endif()
+-    add_definitions(-DHWY_DISABLED_TARGETS=\(${HWY_DISABLED_TARGETS}\))
++    add_compile_options($<$<NOT:$<COMPILE_LANGUAGE:RC>>:-DHWY_DISABLED_TARGETS=\(${HWY_DISABLED_TARGETS}\)>)
+   endif()
+ 
+   # Machine flags.
+diff --git a/tools/CMakeLists.txt b/tools/CMakeLists.txt
+index be1352c..b65a973 100644
+--- a/tools/CMakeLists.txt
++++ b/tools/CMakeLists.txt
+@@ -332,6 +332,12 @@ foreach(BINARY IN LISTS TOOL_BINARIES)
+     endif()
+     set_target_properties(${BINARY} PROPERTIES LINK_FLAGS "${JXL_WASM_TOOLS_LINK_FLAGS}")
+   endif()
++  if(WIN32)
++    target_sources(${BINARY} PRIVATE windows_utf8.rc)
++    if(MSVC)
++      target_link_options(${BINARY} PRIVATE /MANIFEST:NO)
++    endif()
++  endif()
+ endforeach()
+ 
+ install(TARGETS ${TOOL_BINARIES} RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}")
+diff --git a/tools/windows_utf8.manifest b/tools/windows_utf8.manifest
+new file mode 100644
+index 0000000..dab929e
+--- /dev/null
++++ b/tools/windows_utf8.manifest
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
++<assembly manifestVersion="1.0" xmlns="urn:schemas-microsoft-com:asm.v1">
++  <application>
++    <windowsSettings>
++      <activeCodePage xmlns="http://schemas.microsoft.com/SMI/2019/WindowsSettings">UTF-8</activeCodePage>
++    </windowsSettings>
++  </application>
++</assembly>
+diff --git a/tools/windows_utf8.rc b/tools/windows_utf8.rc
+new file mode 100644
+index 0000000..411efb7
+--- /dev/null
++++ b/tools/windows_utf8.rc
+@@ -0,0 +1,3 @@
++#include <winuser.h>
++
++CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "windows_utf8.manifest"
