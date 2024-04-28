@@ -1,6 +1,10 @@
-This [patch](#just-the-patch) enables UTF-8 support in all `libjxl` tools (`cjxl`, `cjpegli`...) on Windows.
+## JPEG XL UTF-8 Patch for Windows
 
-Already patched pre-builds are available in [releases](https://github.com/JacobDev1/libjxl-utf8/releases). The [compilation guide](#full-compilation-guide) is below.
+This [patch](https://github.com/JacobDev1/libjxl-utf8/blob/main/utf8_0.10.2.patch) enables UTF-8 support in `cjxl`, `djxl`, `cjpegli`, `djpegli`, `jxlinfo` on Windows.
+
+- [Download patched pre-builds](https://github.com/JacobDev1/libjxl-utf8/releases)
+- [Just the patch](#just-the-patch)
+- [Full compilation guide](#full-compilation-guide)
 
 ## Just the Patch
 
